@@ -1,0 +1,7 @@
+#list_options {
+    display: none;
+}
+
+#list_options.show {
+    display: block;
+}

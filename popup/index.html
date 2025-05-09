@@ -1,15 +1,31 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="index.css">
+  </head>
   <body>
     <h1>Web Style Modifier</h1>
     <h2><i>Customize your surfing experience.</i></h2>
 
-    <h2>Start Here!</h2>
     <p>General CSS Styling</p>
 
-    <button id="applyCss">Apply style changes</button>
+    <button id="defaultTemplate">Apply Default Template</button>
 
-    <button id="appendCss">Modify margin</button>
+    <hr>
+    <fieldset>
+      <legend>Start Here!</legend>
+        <button id="applyCss">1. Apply margin (default: 10%)</button>
+        <button id="updateTextSize">2. Modify text size</button>
+        <button id="modifyTextColor">3. Modify text color</button>
 
+    </fieldset>
+
+    <div class="dropdown">
+      <p class="dropdown_button">&#9660 This current style applies to all websites</p>
+      <div id="list_options">
+        <button value="allowlist">Allowlist</button>
+        <button value="denylist">Denylist</button>
+      </div>
+    </div>
 
     <script src="popup.js"></script>
   </body>

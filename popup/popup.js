@@ -1,34 +1,67 @@
+document.addEventListener('DOMContentLoaded', () => {
 
-document.getElementById('applyCss').addEventListener('click', () => {
-    chrome.tabs.query({}, function(tabs) {
-        tabs.forEach(function(tab) {
-          chrome.scripting.executeScript({
-            target: {tabId:tab.id, allFrames:true},
-            func: apply_changes
-          });
+    //for opening the .css file
+    document.getElementById('applyCss').addEventListener('click', () => {
+        chrome.tabs.query({}, function(tabs) {
+            tabs.forEach(function(tab) {
+            chrome.scripting.executeScript({
+                target: {tabId:tab.id, allFrames:true},
+                func: apply_changes
+            });
+            });
         });
-      });
-  });
+    });
 
 
-function apply_changes () {
+    //for dropdown list for allow/deny list
+    function toggle_dropdown_website_list() {
+        document.getElementById("list_options").classList.toggle("show");
+    }
+    document.querySelector('.dropdown_button').addEventListener('click', toggle_dropdown_website_list);
 
-    const linkMatchesNodeList = document.querySelectorAll('link[rel="stylesheet"]');
+    //applies the css file
+    function apply_changes () {
 
-    if (linkMatchesNodeList.length) {
+        const linkMatchesNodeList = document.querySelectorAll('link[rel="stylesheet"]');
 
-        //create our element to later add to document
-        const linkForCss = document.createElement('link');
-        linkForCss.setAttribute('rel', 'stylesheet');
+        if (linkMatchesNodeList.length) {
 
-        const userStylePath = chrome.runtime.getURL('user/user_styles.css');
-        linkForCss.setAttribute('href', userStylePath);
+            //create our element to later add to document
+            const linkForCss = document.createElement('link');
+            linkForCss.setAttribute('rel', 'stylesheet');
 
-        //move it to the end, after the last link
-        const lastLink = linkMatchesNodeList[linkMatchesNodeList.length - 1]
-        lastLink.insertAdjacentElement('afterend', linkForCss);
+            const userStylePath = chrome.runtime.getURL('user/user_styles.css');
+            linkForCss.setAttribute('href', userStylePath);
 
+            //move it to the end, after the last link
+            const lastLink = linkMatchesNodeList[linkMatchesNodeList.length - 1]
+            lastLink.insertAdjacentElement('afterend', linkForCss);
+
+
+        }
 
     }
 
-}
+    //to update the margin officially
+    document.getElementById('updateMargin').addEventListener('click', () => {
+        chrome.windows.create({
+            url: 'actions/margin_input.html',
+            type: 'popup',
+            width: 300,
+            height: 200
+        });
+    });
+
+    
+
+    document.getElementById('modifyTextColor').addEventListener('click', () => {
+        chrome.windows.create({
+            url: 'actions/text_color.html',
+            type: 'popup',
+            width: 300,
+            height: 200
+        });
+    });
+
+
+});
