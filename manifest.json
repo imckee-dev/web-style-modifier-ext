@@ -4,7 +4,31 @@
     "version": "1.0",
     "manifest_version": 3,
     "action": {
-      "default_popup": "index.html",
-      "default_icon": "web_design_logo.png"
-    }
+      "default_popup": "popup/index.html",
+      "default_icon": "assets/web_design_logo.png"
+    },
+
+
+    "permissions": ["scripting", "tabs"],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["user/user_styles.css", "scripts/modify_margin.js"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+
+
+    "content_scripts": [
+      {
+        "js": ["scripts/modify_margin.js"],
+        "matches": [
+          "https://*.nytimes.com/*",
+          "https://developer.chrome.com/docs/webstore/*"
+          ],
+        "css": ["user/user_styles.css"]
+      }
+    ]
   }
