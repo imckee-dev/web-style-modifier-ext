@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('defaultTemplate').addEventListener('click', () => { //Get Element defaultTemplate
-
-
         chrome.tabs.query({}, function(tabs) { //function tabs
 
             tabs.forEach(function(tab) { // for each tab
