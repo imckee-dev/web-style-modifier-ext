@@ -9,14 +9,17 @@
     },
 
 
-    "permissions": ["scripting", "tabs", "storage"],
+    "permissions": ["scripting", 
+    "tabs", 
+    "storage"],
+
     "host_permissions": [
       "<all_urls>"
     ],
     "web_accessible_resources": [
       {
-        "resources": ["user/user_styles.css", "scripts/modify_margin.js"],
-        "matches": ["<all_urls>"]
+        "resources": ["user/*", "scripts/modify_margin.js"],
+        "matches": ["https://*/*", "file:///*"]
       }
     ],
 

@@ -1,3 +1,5 @@
+/*
+
 document.getElementById('updateMargin').addEventListener('click', () => {
     const margin = document.getElementById('marginValue').value;
     const css = `p { margin: ${margin}%; }`;
@@ -17,3 +19,5 @@ document.getElementById('updateMargin').addEventListener('click', () => {
     });
     window.close();
 });
+
+*/
